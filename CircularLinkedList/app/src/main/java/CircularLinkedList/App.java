@@ -18,6 +18,7 @@ public class App {
         for(int i = 0; i < 10; i++) {
             cll.insert(rand.nextInt(100));
         }
+        var refList = cll.clone();
 
         //Testing display with elements in the list
         cll.display();
@@ -70,5 +71,7 @@ public class App {
 
         //Display the emptied list
         cll.display();
+        System.out.println("Cloned copy of the list after inserting initial 10 values:");
+        refList.display();
     }
 }

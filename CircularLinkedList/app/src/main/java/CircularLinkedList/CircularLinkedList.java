@@ -77,7 +77,7 @@ public class CircularLinkedList {
         }
 
 
-        for(int i = 0; i < numItems; i++) {
+        for(int i = 0; i < size(); i++) {
             if(current.getValue() == searchNum) {
                 return current.getValue();
             }
@@ -96,10 +96,35 @@ public class CircularLinkedList {
     }
 
     /**
+     * @return a clone of the list, does not return null
+     */
+    public CircularLinkedList clone() {
+        var list = new CircularLinkedList();
+        if(isEmpty()){
+            return list;
+        }
+
+        for(int i = 0; i < size(); i++) {
+            step();
+            int val = current.getValue();
+            list.insert(val);
+        }
+
+        return list;
+    }
+
+    /**
      * @return true if the list has no elements
      */
     public boolean isEmpty() {
         return current == null || numItems == 0;
+    }
+
+    /**
+     * @return the number of elements contained in the list
+     */
+    public int size() {
+        return numItems;
     }
 
     public String toString() {
