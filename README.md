@@ -9,9 +9,9 @@ This repo is a collection of code from programs made in this class.
 
 These all run using Gradle with Java 21. You can run it simply by typing in the terminal:<br>
 ```
-    git clone https://www.github.com/aram-ap/CS282
-    cd /path/to/this/repo
-    cd <project folder name>
+git clone https://www.github.com/aram-ap/CS282
+cd /path/to/repo
+cd <project folder name>
 ```
 
 and either:<br>
