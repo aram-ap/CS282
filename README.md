@@ -3,6 +3,22 @@
 
 This repo is a collection of code from programs made in this class.
 
+---
+
+## How to run these:
+
+These all run using Gradle with Java 21. You can run it simply by typing in the terminal:<br>
+'git clone https://www.github.com/aram-ap/CS282'
+'cd /path/to/this/repo'
+'cd <project folder name>'
+
+and either:<br>
+'sh gradlew run'
+or if you have gradle installed already,
+'gradle run'
+
+---
+
 > ### 'Lists' - Review program on Lists, ordered and unordered:<br>
 > - 'NumericList<T extends Number>': list interface of generic Number. Contains 'size()', 'isFull()', 'isEmpty()', 'insert(Number)', 'delete(Number)', 'search(Number)', and 'display()' functions.
 > - 'OrderedNumericList<T extends Number>': All list functions, but inserts in sorted order, contains merge function, searches with binary search, and contains an array expansion function.
