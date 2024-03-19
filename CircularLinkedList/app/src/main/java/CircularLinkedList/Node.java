@@ -2,7 +2,6 @@ package CircularLinkedList;
 
 public class Node {
     private Node next;
-    private Node prev;
     private int val;
 
     public Node(int val) {
@@ -11,10 +10,6 @@ public class Node {
 
     public void setNext(Node next) {
         this.next = next;
-    }
-
-    public void setPrev(Node prev) {
-        this.prev = prev;
     }
 
     public void setValue(int value) {
@@ -27,9 +22,5 @@ public class Node {
 
     public Node getNext() {
         return next;
-    }
-
-    public Node getPrev() {
-        return prev;
     }
 }

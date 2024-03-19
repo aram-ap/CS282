@@ -35,10 +35,8 @@ public class CircularLinkedList {
 
         if(current == null) {
             node.setNext(node);
-            node.setPrev(node);
         } else {
             node.setNext(current.getNext());
-            node.setPrev(current);
             current.setNext(node);
         }
 
@@ -60,14 +58,10 @@ public class CircularLinkedList {
             return lastNode.getValue();
         }
 
-        Node deletedNode = current;
+        Node deletedNode = current.getNext();
+        current.setNext(deletedNode.getNext());
 
-        current.getPrev().setNext(current.getNext());
-        current.getNext().setPrev(current.getPrev());
-
-        current = current.getPrev();
         numItems--;
-
         return deletedNode.getValue();
     }
 
@@ -82,13 +76,12 @@ public class CircularLinkedList {
             return -1;
         }
 
-        Node theNode = current;
 
         for(int i = 0; i < numItems; i++) {
-            if(theNode.getValue() == searchNum) {
-                return theNode.getValue();
+            if(current.getValue() == searchNum) {
+                return current.getValue();
             }
-            theNode = theNode.getNext();
+            step();
         }
 
         System.out.println("Value '" + searchNum + "' does not exist in the list!");
