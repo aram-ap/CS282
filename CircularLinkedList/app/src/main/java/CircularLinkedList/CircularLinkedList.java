@@ -1,5 +1,8 @@
 package CircularLinkedList;
 
+/**
+ * A circular linked list is a list of values connected such that there is no "head" or "tail"
+ */
 public class CircularLinkedList {
 
     private Node current;
@@ -9,6 +12,10 @@ public class CircularLinkedList {
         numItems = 0;
     }
 
+    /**
+     * Steps forward to the next node
+     * @return value of the new current node
+     */
     public int step() {
         if(numItems == 0) {
             System.out.println("Couldn't step, size is 0!");
@@ -19,6 +26,10 @@ public class CircularLinkedList {
         return current.getValue();
     }
 
+    /**
+     * Inserts a new value in front of the current node
+     * @param val The number to insert
+     */
     public void insert(int val) {
         Node node = new Node(val);
 
@@ -35,6 +46,10 @@ public class CircularLinkedList {
         numItems++;
     }
 
+    /**
+     * Deletes the current node
+     * @return The value of the deleted node
+     */
     public int delete() {
         if(numItems == 0) {
             System.out.println("Couldn't delete, size is 0!");
@@ -50,16 +65,21 @@ public class CircularLinkedList {
         current.getPrev().setNext(current.getNext());
         current.getNext().setPrev(current.getPrev());
 
-        current = current.getNext();
+        current = current.getPrev();
         numItems--;
 
         return deletedNode.getValue();
     }
 
+    /**
+     * Searches for the specified value in the list
+     * @param searchNum The number to search for
+     * @return Returns the given searchNum if found, -1 if not.
+     */
     public int search(int searchNum) {
         if(numItems == 0) {
             System.out.println("Couldn't search for '" + searchNum + "', size is 0!");
-            return 0;
+            return -1;
         }
 
         Node theNode = current;
@@ -72,13 +92,19 @@ public class CircularLinkedList {
         }
 
         System.out.println("Value '" + searchNum + "' does not exist in the list!");
-        return 0;
+        return -1;
     }
 
+    /**
+     * Prints the contents of the list
+     */
     public void display() {
         System.out.println(toString());
     }
 
+    /**
+     * @return true if the list has no elements
+     */
     public boolean isEmpty() {
         return current == null || numItems == 0;
     }
@@ -89,7 +115,7 @@ public class CircularLinkedList {
         }
 
         StringBuilder sb = new StringBuilder("[");
-        Node theNode = current;
+        Node theNode = current.getNext();
 
         for(int i = 0; i < numItems; i++) {
             int val = theNode.getValue();
