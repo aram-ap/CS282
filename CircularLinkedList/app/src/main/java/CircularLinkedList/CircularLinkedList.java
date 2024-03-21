@@ -2,6 +2,7 @@ package CircularLinkedList;
 
 /**
  * A circular linked list is a list of values connected such that there is no "head" or "tail"
+ * @author Aram Aprahamian
  */
 public class CircularLinkedList {
 

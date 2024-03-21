@@ -1,5 +1,8 @@
 package CircularLinkedList;
 
+/**
+ * Generic Node class
+ */
 public class Node {
     private Node next;
     private int val;
