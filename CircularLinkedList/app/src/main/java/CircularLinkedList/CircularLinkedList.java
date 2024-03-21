@@ -67,26 +67,37 @@ public class CircularLinkedList {
     }
 
     /**
-     * Searches for the specified value in the list
-     * @param searchNum The number to search for
-     * @return Returns the given searchNum if found, -1 if not.
+     * Searches for the specified value in the list.
+     * @param searchNum The number to search for.
+     * @return True if {@code searchNum} is found in the list, False if not.
      */
-    public int search(int searchNum) {
+    public boolean search(int searchNum) {
         if(numItems == 0) {
             System.out.println("Couldn't search for '" + searchNum + "', size is 0!");
-            return -1;
+            return false;
         }
 
 
         for(int i = 0; i < size(); i++) {
             if(current.getValue() == searchNum) {
-                return current.getValue();
+                return true;
             }
             step();
         }
 
         System.out.println("Value '" + searchNum + "' does not exist in the list!");
-        return -1;
+        return false;
+    }
+
+    /**
+     * @return the current node's value, returns 0 if the list is empty
+     */
+    public int getCurrent() {
+        if(isEmpty()) {
+            return 0;
+        }
+
+        return current.getValue();
     }
 
     /**
@@ -149,5 +160,27 @@ public class CircularLinkedList {
         sb.append("\nCurrent Node: " + current.getValue());
 
         return sb.toString();
+    }
+
+    public boolean equals(Object obj) {
+        if(obj == null || !(obj instanceof CircularLinkedList cll)) {
+            return false;
+        } else if (cll.isEmpty() && isEmpty()) {
+            return true;
+        } else if(cll.numItems != numItems) {
+            return false;
+        }
+
+        //Search both to the same value ensures both start at the correct starting point
+        cll.search(current.getValue());
+        search(current.getValue());
+
+        for(int i = 0; i < numItems; i++) {
+            if(cll.step() != step()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
