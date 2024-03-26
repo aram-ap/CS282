@@ -7,7 +7,7 @@ This repo is a collection of code from programs made in this class.
 
 ## How to run these:
 
-These all run using Gradle with Java 21. You can run it simply by typing in the terminal:<br>
+These all run using [Gradle](https://github.com/gradle/gradle) with Java 21. You can run it simply by typing in the terminal:<br>
 ```
 git clone https://www.github.com/aram-ap/CS282
 cd CS282/<project folder name>
