@@ -7,27 +7,31 @@ package HashtableAssignment;
 public class BST {
     private Node root;
 
-     public BST(){
-         root = null;
-     }
+    public BST(){
+        root = null;
+    }
+
     public boolean isEmpty(){
         return root == null;
     }
-    public Node search(int item){
+
+    public Node search(int id){
         Node curr = root;
-        while(curr.data != item){
-            if(curr.data < item)
+        while(curr != null && curr.data.id != id){
+            if(curr.data.id < id)
                 curr = curr.rightChild;
             else
                 curr = curr.leftChild;
+
             if(curr == null)
                 return null;
         }
         //found it
         return curr;
     }
-    public void insert(int item){
-        Node n = new Node(item);
+
+    public void insert(Student s){
+        Node n = new Node(s);
         if(isEmpty())
             root = n;
         else{
@@ -36,7 +40,7 @@ public class BST {
             boolean isLeft = true;
             while(curr != null){
                 prev = curr;
-                if(item < curr.data){
+                if(s.id < curr.data.id){
                     curr = curr.leftChild;
                     isLeft = true;
                 }
@@ -53,20 +57,24 @@ public class BST {
 
         }
     }
+
     public void inorder(){
         inorder(root);
     }
+
     private void inorder(Node r){
         if(r != null){
             inorder(r.leftChild);
-            System.out.print(r + " ");
+            System.out.print(r+ " ");
             inorder(r.rightChild);
         }
 
     }
+
     public void preorder(){
         preorder(root);
     }
+
     private void preorder(Node r){
         if(r != null){
         System.out.println(r);
@@ -74,9 +82,11 @@ public class BST {
         preorder(r.rightChild);
         }
     }
+
     public void postorder(){
         postorder(root);
     }
+
     private void postorder(Node r){
         if(r != null){
         postorder(r.leftChild);
@@ -84,22 +94,24 @@ public class BST {
         System.out.println(r);
         }
     }
-    public int min(){
+
+    public Node min(){
         Node curr = root;
         while(curr.leftChild != null){
             curr = curr.leftChild;
         }
-        return curr.data;
+        return curr;
     }
-    public boolean delete(int item){
+
+    public boolean delete(int id){
        Node curr = root;
        Node prev = root;
 
         boolean isLeft = true;
 
-        while (curr.data != item) {//find the item to delete
+        while (curr.data.id != id) {//find the item to delete
             prev = curr;
-            if (item < curr.data) {
+            if (id < curr.data.id) {
                 curr = curr.leftChild;
                 isLeft = true;
             } else {

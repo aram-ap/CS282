@@ -4,6 +4,7 @@
 package HashtableAssignment;
 import java.io.*;
 import java.util.Scanner;
+import java.util.Random;
 
 public class App {
     static Scanner in;
@@ -11,6 +12,7 @@ public class App {
     public static void main(String[] args) {
         try {
             in = new Scanner(System.in);
+            String name;
             int aKey;
             Node aDataItem;
             int size, n, keysPerCell = 100;
@@ -27,8 +29,17 @@ public class App {
             {
                 aKey = (int)(java.lang.Math.random() *
                         keysPerCell * size);
+
+                while(theHashTable.find(aKey) != null) {
+                    aKey = (int)(java.lang.Math.random() *
+                            keysPerCell * size);
+                }
+
                 // aDataItem = new Node(aKey);
-                theHashTable.insert(aKey);
+
+                name = getRandomName();
+                Student s = new Student(name, aKey);
+                theHashTable.insert(s);
             }
             while(true) // interact with user
             {
@@ -41,13 +52,22 @@ public class App {
                         theHashTable.displayTable();
                         break;
                     case 'i':
-                        System.out.print("Enter key value to insert: ");
+
+                        System.out.println("Enter a name: ");
+                        name = getString();
+
+                        System.out.print("Enter a student id: ");
                         aKey = getInt();
+                        while(theHashTable.find(aKey) != null) {
+                            System.out.println(String.valueOf(aKey) + " exists! Please add another.");
+                            aKey = getInt();
+                        }
                         // aDataItem = new Node(aKey);
-                        theHashTable.insert(aKey);
+                        Student s = new Student(name, aKey);
+                        theHashTable.insert(s);
                         break;
                     case 'd':
-                        System.out.print("Enter key value to delete: ");
+                        System.out.print("Enter student id to delete: ");
                         aKey = getInt();
                         theHashTable.delete(aKey);
                         break;
@@ -56,7 +76,7 @@ public class App {
                         aKey = getInt();
                         aDataItem = theHashTable.find(aKey);
                         if(aDataItem != null)
-                            System.out.println("Found " + aKey);
+                            System.out.println("Found student with id \'" + aKey + "\': " + aDataItem);
                         else
                             System.out.println("Could not find " + aKey);
                         break;
@@ -92,6 +112,20 @@ public class App {
     {
         String s = getString();
         return Integer.parseInt(s);
+    }
+
+    public static String getRandomName() {
+        String name = "";
+        Random random = new Random();
+
+        int lengthFirst = FirstNames.values().length;
+        int lengthLast = LastNames.values().length;
+
+        name += FirstNames.values()[random.nextInt(0, lengthFirst)].toString();
+        name += " ";
+        name += LastNames.values()[random.nextInt(0, lengthLast)].toString();
+
+        return name;
     }
     //--------------------------------------------------------------
 } // end class HashChainApp

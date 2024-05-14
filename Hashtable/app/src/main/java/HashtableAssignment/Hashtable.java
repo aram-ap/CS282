@@ -31,23 +31,23 @@ public class Hashtable
         return key % arraySize;
     }
     // -------------------------------------------------------------
-    public void insert(int key) // insert a link
+    public void insert(Student s) // insert a link
     {
-        int hashVal = hashFunc(key); // hash the key
-        hashArray[hashVal].insert(key); // insert at hashVal
+        int hashVal = hashFunc(s.id); // hash the key
+        hashArray[hashVal].insert(s); // insert at hashVal
     } // end insert()
     // -------------------------------------------------------------
-    public void delete(int key) // delete a link
+    public void delete(int id) // delete a link
     {
-        int hashVal = hashFunc(key); // hash the key
-        hashArray[hashVal].delete(key); // delete link
+        int hashVal = hashFunc(id); // hash the key
+        hashArray[hashVal].delete(id); // delete link
     } // end delete()
     // -------------------------------------------------------------
-    public Node find(int key) // find link
+    public Node find(int id) // find link
     {
-        int hashVal = hashFunc(key); // hash the key
-        Node theLink = hashArray[hashVal].search(key); // get link
-        return theLink; // return link
+        int hashVal = hashFunc(id); // hash the key
+        Node node = hashArray[hashVal].search(id); // get link
+        return node; // return link
     }
     // -------------------------------------------------------------
 } // end class HashTable

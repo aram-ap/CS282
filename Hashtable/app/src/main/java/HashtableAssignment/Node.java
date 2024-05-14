@@ -5,14 +5,14 @@ package HashtableAssignment;
  * @author juneja_u
  */
 public class Node {
-    int data;
+    Student data;
     Node leftChild;
     Node rightChild;
 
     public Node(){
 
     }
-    public Node(int data){
+    public Node(Student data){
         this.data = data;
     }
     public String toString(){
