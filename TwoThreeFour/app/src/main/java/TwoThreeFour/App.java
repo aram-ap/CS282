@@ -20,6 +20,7 @@ public class App {
         t.insert(5);
         t.insert(44);
 
+        //Delete method marks the node containing the key as
         t.delete(43);
         System.out.println(t.search(20));
         t.inorderTraversal();

@@ -17,13 +17,13 @@ public class HuffmanTree {
         for(char c : msg.toCharArray()) {
             Node n = null;
             for(int i = 0; i < numNodes; i++) {
-                if(Character.toLowerCase(nodes[i].letter) == Character.toLowerCase(c)) {
+                if(nodes[i].letter == c) {
                     n = nodes[i];
                     break;
                 }
             }
             if(n == null) {
-                n = new Node(Character.toLowerCase(c));
+                n = new Node(c);
                 nodes[numNodes++] = n;
             }
             n.freq++;
@@ -67,16 +67,7 @@ public class HuffmanTree {
             return;
         }
 
-        if(Character.toLowerCase(current.letter) != 0) {
-            int index;
-            if(current.letter != ' ') {
-                index = Character.toLowerCase(current.letter) - ('a');
-            } else {
-                index = 26;
-            }
-
-            table[index] = current.getCode();
-        }
+        table[current.letter] = current.getCode();
 
         if(current.left != null) {
             current.left.setCode(current.getCode() + "0");
@@ -90,7 +81,7 @@ public class HuffmanTree {
     }
 
     public String[] getTable() {
-        String[] table = new String[27];
+        String[] table = new String[256];
 
         assignTextPreorderRecursive(head, table);
 
@@ -110,13 +101,7 @@ public class HuffmanTree {
         String[] table = getTable();
 
         for(char c : msg.toCharArray()) {
-            int index;
-            if(c != ' ') {
-                index = Character.toLowerCase(c) - ('a');
-            } else {
-                index = 26;
-            }
-            sb.append(table[index] + " ");
+            sb.append(table[c] + " ");
         }
 
         return sb.toString();
@@ -153,7 +138,7 @@ public class HuffmanTree {
             if(s == null)
                 continue;
 
-            char c = i != 26? (char)(i + 97) : ' ';
+            char c = (char)i;
 
             if(sb.isEmpty()) {
                 sb.append("[");
@@ -165,7 +150,6 @@ public class HuffmanTree {
                 sb.append(", ");
                 sb.append(c);
                 sb.append(": ");
-                // sb.append((char)(i));
                 sb.append(s);
             }
         }

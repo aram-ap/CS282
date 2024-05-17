@@ -7,8 +7,26 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Test
+    public void testFindA_n() {
+        // Test case 1: a_0 = 0
+        int result1 = ExtraCredit.findA_n(5, 0);
+        assertEquals(-363, result1);
+
+        // Test case 2: a_0 = 1
+        int result2 = ExtraCredit.findA_n(5, 1);
+        assertEquals(-360, result2);
+
+        // Test case 3: a_0 = 2
+        int result3 = ExtraCredit.findA_n(5, 2);
+        assertEquals(-357, result3);
+
+        // Test case 4: n = 0
+        int result4 = ExtraCredit.findA_n(0, 10);
+        assertEquals(10, result4);
+
+        // Test case 5: n = 1
+        int result5 = ExtraCredit.findA_n(1, 10);
+        assertEquals(37, result5);
     }
 }
